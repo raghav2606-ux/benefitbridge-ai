@@ -1,0 +1,324 @@
+[
+    {
+        "id": "EDU002",
+        "name": "Test Scholarship",
+        "category": "Education",
+        "subcategory": "Scholarship",
+        "government_level": "Central",
+        "state": "All India",
+        "description": "This is a test scheme.",
+        "benefit": {
+            "type": "Scholarship",
+            "amount": "₹50,000",
+            "description": "Financial assistance"
+        },
+        "eligibility": {
+            "citizenship": "Indian",
+            "min_age": 18,
+            "max_age": 30,
+            "gender": [
+                "Any"
+            ],
+            "max_family_income": 800000,
+            "occupation": [
+                "Student"
+            ],
+            "education_level": [
+                "Undergraduate"
+            ],
+            "class_or_course": [
+                "B.Tech"
+            ],
+            "category": [
+                "General"
+            ],
+            "state_specific": false,
+            "disability_required": false,
+            "farmer_required": false,
+            "other_conditions": []
+        },
+        "required_documents": [
+            "Aadhaar Card",
+            "Income Certificate"
+        ],
+        "application": {
+            "mode": "Online",
+            "portal": "National Scholarship Portal",
+            "official_url": "https://scholarships.gov.in",
+            "deadline": "31-12-2026"
+        },
+        "benefits": {
+            "financial": "₹50,000",
+            "non_financial": [
+                "Mentorship"
+            ]
+        },
+        "ai_metadata": {
+            "priority": 1,
+            "difficulty": "Easy",
+            "estimated_processing_time": "30 days",
+            "tags": [
+                "education",
+                "scholarship"
+            ]
+        },
+        "ai_explanation": {
+            "summary": "Test Scheme",
+            "eligibility_reason_template": "Eligible",
+            "common_rejection_reasons": [],
+            "tips": [],
+            "frequently_asked_questions": [],
+            "next_steps": []
+        },
+        "version": "1.0",
+        "last_verified": "2026-07-17",
+        "source": {
+            "organization": "Government of India",
+            "official_url": "https://scholarships.gov.in"
+        }
+    },
+    {
+        "id": "EDU003",
+        "name": "Test Scholarship",
+        "category": "Education",
+        "subcategory": "Scholarship",
+        "government_level": "Central",
+        "state": "All India",
+        "description": "This is a test scheme.",
+        "benefit": {
+            "type": "Scholarship",
+            "amount": "₹50,000",
+            "description": "Financial assistance"
+        },
+        "eligibility": {
+            "citizenship": "Indian",
+            "min_age": 18,
+            "max_age": 30,
+            "gender": [
+                "Any"
+            ],
+            "max_family_income": 800000,
+            "occupation": [
+                "Student"
+            ],
+            "education_level": [
+                "Undergraduate"
+            ],
+            "class_or_course": [
+                "B.Tech"
+            ],
+            "category": [
+                "General"
+            ],
+            "state_specific": false,
+            "disability_required": false,
+            "farmer_required": false,
+            "other_conditions": []
+        },
+        "required_documents": [
+            "Aadhaar Card",
+            "Income Certificate"
+        ],
+        "application": {
+            "mode": "Online",
+            "portal": "National Scholarship Portal",
+            "official_url": "https://scholarships.gov.in",
+            "deadline": "31-12-2026"
+        },
+        "benefits": {
+            "financial": "₹50,000",
+            "non_financial": [
+                "Mentorship"
+            ]
+        },
+        "ai_metadata": {
+            "priority": 1,
+            "difficulty": "Easy",
+            "estimated_processing_time": "30 days",
+            "tags": [
+                "education",
+                "scholarship"
+            ]
+        },
+        "ai_explanation": {
+            "summary": "Test Scheme",
+            "eligibility_reason_template": "Eligible",
+            "common_rejection_reasons": [],
+            "tips": [],
+            "frequently_asked_questions": [],
+            "next_steps": []
+        },
+        "version": "1.0",
+        "last_verified": "2026-07-17",
+        "source": {
+            "organization": "Government of India",
+            "official_url": "https://scholarships.gov.in"
+        }
+    },
+    {
+        "id": "EDU004",
+        "name": "Another Test Scholarship",
+        "category": "Education",
+        "subcategory": "Scholarship",
+        "government_level": "Central",
+        "state": "All India",
+        "description": "Scholarship for undergraduate students.",
+        "benefit": {
+            "type": "Scholarship",
+            "amount": "₹50,000",
+            "description": "Financial assistance for higher education."
+        },
+        "eligibility": {
+            "citizenship": "Indian",
+            "min_age": 18,
+            "max_age": 30,
+            "gender": [
+                "Any"
+            ],
+            "max_family_income": 800000,
+            "occupation": [
+                "Student"
+            ],
+            "education_level": [
+                "Undergraduate"
+            ],
+            "class_or_course": [
+                "B.Tech"
+            ],
+            "category": [
+                "General"
+            ],
+            "state_specific": false,
+            "disability_required": false,
+            "farmer_required": false,
+            "other_conditions": []
+        },
+        "required_documents": [
+            "Aadhaar Card",
+            "Income Certificate"
+        ],
+        "application": {
+            "mode": "Online",
+            "portal": "National Scholarship Portal",
+            "official_url": "https://scholarships.gov.in",
+            "deadline": "31-12-2026"
+        },
+        "benefits": {
+            "financial": "₹50,000",
+            "non_financial": [
+                "Mentorship"
+            ]
+        },
+        "ai_metadata": {
+            "priority": 1,
+            "difficulty": "Easy",
+            "estimated_processing_time": "30 days",
+            "tags": [
+                "education",
+                "scholarship"
+            ]
+        },
+        "ai_explanation": {
+            "summary": "Government scholarship for undergraduate students.",
+            "eligibility_reason_template": "You satisfy the eligibility criteria.",
+            "common_rejection_reasons": [],
+            "tips": [
+                "Apply before the deadline."
+            ],
+            "frequently_asked_questions": [],
+            "next_steps": [
+                "Register on the portal.",
+                "Upload the required documents."
+            ]
+        },
+        "version": "1.0",
+        "last_verified": "2026-07-17",
+        "source": {
+            "organization": "Government of India",
+            "official_url": "https://scholarships.gov.in"
+        }
+    },
+    {
+        "id": "EDU005",
+        "name": "Another Test Scholarship",
+        "category": "Education",
+        "subcategory": "Scholarship",
+        "government_level": "Central",
+        "state": "All India",
+        "description": "Scholarship for undergraduate students.",
+        "benefit": {
+            "type": "Scholarship",
+            "amount": "₹50,000",
+            "description": "Financial assistance for higher education."
+        },
+        "eligibility": {
+            "citizenship": "Indian",
+            "min_age": 18,
+            "max_age": 30,
+            "gender": [
+                "Any"
+            ],
+            "max_family_income": 800000,
+            "occupation": [
+                "Student"
+            ],
+            "education_level": [
+                "Undergraduate"
+            ],
+            "class_or_course": [
+                "B.Tech"
+            ],
+            "category": [
+                "General"
+            ],
+            "state_specific": false,
+            "disability_required": false,
+            "farmer_required": false,
+            "other_conditions": []
+        },
+        "required_documents": [
+            "Aadhaar Card",
+            "Income Certificate"
+        ],
+        "application": {
+            "mode": "Online",
+            "portal": "National Scholarship Portal",
+            "official_url": "https://scholarships.gov.in",
+            "deadline": "31-12-2026"
+        },
+        "benefits": {
+            "financial": "₹50,000",
+            "non_financial": [
+                "Mentorship"
+            ]
+        },
+        "ai_metadata": {
+            "priority": 1,
+            "difficulty": "Easy",
+            "estimated_processing_time": "30 days",
+            "tags": [
+                "education",
+                "scholarship"
+            ]
+        },
+        "ai_explanation": {
+            "summary": "Government scholarship for undergraduate students.",
+            "eligibility_reason_template": "You satisfy the eligibility criteria.",
+            "common_rejection_reasons": [],
+            "tips": [
+                "Apply before the deadline."
+            ],
+            "frequently_asked_questions": [],
+            "next_steps": [
+                "Register on the portal.",
+                "Upload the required documents."
+            ]
+        },
+        "version": "1.0",
+        "last_verified": "2026-07-17",
+        "source": {
+            "organization": "Government of India",
+            "official_url": "https://scholarships.gov.in"
+        }
+    }
+]

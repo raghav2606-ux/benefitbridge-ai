@@ -1,0 +1,17 @@
+import { AlertTriangle, CheckCircle2, FileCheck2, FileText, Sparkles } from "lucide-react";
+import { DocumentReadiness, DocumentStatus } from "@/types/eligibility";
+
+interface Props {
+  documents: DocumentStatus[];
+  readiness?: DocumentReadiness;
+}
+
+export default function DocumentSection({ documents, readiness }: Props) {
+  const missing = documents.filter((document) => document.status === "Missing");
+  const ready = documents.length - missing.length;
+  const recommendation = readiness?.recommendation ?? (missing.length
+    ? `Before applying, arrange: ${missing.map((document) => document.name).join(", ")}.`
+    : "All required documents are marked ready. Review each document before applying.");
+
+  return <section className="mt-8 overflow-hidden rounded-3xl border border-cyan-100 bg-gradient-to-br from-cyan-50 via-white to-blue-50 shadow-lg shadow-cyan-950/5"><div className="flex flex-col gap-4 border-b border-cyan-100 bg-white/70 px-6 py-5 sm:flex-row sm:items-center sm:justify-between"><div><div className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-cyan-700"><Sparkles className="h-3.5 w-3.5" /> AI document readiness</div><h3 className="mt-2 flex items-center gap-2 text-xl font-extrabold text-slate-900"><FileCheck2 className="h-5 w-5 text-cyan-600" /> Application documents</h3></div><div className="flex gap-2 text-xs font-bold"><span className="rounded-full bg-emerald-50 px-3 py-1.5 text-emerald-700">{readiness?.ready_count ?? ready} ready</span><span className="rounded-full bg-amber-50 px-3 py-1.5 text-amber-700">{readiness?.missing_count ?? missing.length} missing</span></div></div><div className="space-y-3 p-5 sm:p-6">{documents.map((document) => <div key={document.name} className="flex items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm"><div className="flex min-w-0 items-center gap-3"><span className={document.status === "Ready" ? "rounded-xl bg-emerald-50 p-2.5 text-emerald-600" : "rounded-xl bg-amber-50 p-2.5 text-amber-600"}><FileText className="h-5 w-5" /></span><div className="min-w-0"><p className="truncate font-bold text-slate-800">{document.name}</p><p className="mt-0.5 text-xs text-slate-500">Required document</p></div></div>{document.status === "Ready" ? <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700"><CheckCircle2 className="h-3.5 w-3.5" /> Ready</span> : <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-700"><AlertTriangle className="h-3.5 w-3.5" /> Missing</span>}</div>)}</div><div className={missing.length ? "mx-5 mb-5 flex gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-amber-900 sm:mx-6 sm:mb-6" : "mx-5 mb-5 flex gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-900 sm:mx-6 sm:mb-6"}>{missing.length ? <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" /> : <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />}<div><p className="font-extrabold">AI recommendation</p><p className="mt-1 text-sm leading-6">{recommendation}</p><p className="mt-2 text-xs leading-5 opacity-75">Document readiness is currently based on your selections; OCR verification can be added later without changing these results.</p></div></div></section>;
+}

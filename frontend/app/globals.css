@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #bfdbfe;
+  color: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Safety net for legacy light-only utility classes in dense dashboard content. */
+  .bg-white { background-color: #0f172a; }
+  .bg-slate-50 { background-color: #111827; }
+  .bg-slate-100 { background-color: #1e293b; }
+  .border-slate-100, .border-slate-200, .border-slate-300 { border-color: #334155; }
+  .text-slate-900, .text-slate-800 { color: #f8fafc; }
+  .text-slate-700 { color: #e2e8f0; }
+  .text-slate-600 { color: #cbd5e1; }
+  .text-slate-500 { color: #94a3b8; }
+  .text-slate-400 { color: #94a3b8; }
+  .text-gray-900 { color: #f8fafc; }
+  .text-gray-600 { color: #cbd5e1; }
+  .bg-blue-50 { background-color: rgb(30 58 138 / 0.35); }
+  .bg-emerald-50 { background-color: rgb(6 78 59 / 0.35); }
+  .bg-amber-50 { background-color: rgb(120 53 15 / 0.3); }
+  .bg-red-50 { background-color: rgb(127 29 29 / 0.3); }
+
+  ::selection {
+    background: #1d4ed8;
+    color: #f8fafc;
+  }
+}
