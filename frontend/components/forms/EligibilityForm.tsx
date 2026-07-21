@@ -21,7 +21,7 @@ import RecommendationList from "../recommendations/RecommendationList";
 import Skeleton from "@/components/ui/Skeleton";
 
 export default function EligibilityForm() {
-  const requiredText = (field: string) => ({ required: `${field} is required.`, validate: (value: string) => value.trim().length > 0 || `${field} is required.` });
+  const requiredText = (field: string) => ({ required: `${field} is required.`, validate: (value: string | undefined) => Boolean(value?.trim()) || `${field} is required.` });
   const {
     register,
     handleSubmit,
