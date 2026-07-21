@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="asset/logo.png" alt="BenefitBridge AI Logo" width="220">
+  <img src="asset/logo.png" alt="BenefitBridge AI Logo" width="280"/>
 </p>
 
 <h1 align="center">BenefitBridge AI</h1>
 
 <p align="center">
-Helping people discover government schemes they are actually eligible for.
+Helping people discover, understand, and apply for government schemes they are actually eligible for.
 </p>
 
 <p align="center">
@@ -18,11 +18,33 @@ Helping people discover government schemes they are actually eligible for.
 
 </p>
 
+<p align="center">
+
+🌐 <b><a href="https://benefitbridge-ai.vercel.app">Live Demo</a></b> •
+📚 <b><a href="https://benefitbridge-ai.onrender.com/docs">API Documentation</a></b> •
+💻 <b><a href="https://github.com/raghav2606-ux/benefitbridge-ai">Source Code</a></b>
+
+</p>
+
 ---
 
-# BenefitBridge AI
+## 🚀 Project Snapshot
 
-> Helping people discover government schemes they are actually eligible for.
+BenefitBridge AI is an AI-assisted platform that helps users quickly discover government schemes they are eligible for. Instead of searching through multiple government websites, users enter a few personal details and receive personalized recommendations, eligibility insights, required documents, and official application links in one place.
+
+### ✨ Highlights
+
+- 🎯 Personalized eligibility checking
+- 📑 Government scheme recommendations
+- 📄 Downloadable PDF eligibility reports
+- 🔍 Smart search and category filtering
+- ⚖️ Compare government schemes
+- 📋 Required document guidance
+- 🔗 Official government application links
+- 📱 Fully responsive design
+- ⚡ FastAPI backend with Next.js frontend
+
+---
 
 ## About the Project
 
