@@ -10,6 +10,7 @@ import Input from "@/components/ui/Input";
 
 import { checkEligibility } from "@/services/eligibility";
 import { getApiErrorMessage } from "@/services/api";
+import { saveEligibilityHistory } from "@/lib/eligibilityHistory";
 
 import {
   EligibilityRequest,
@@ -20,6 +21,7 @@ import RecommendationList from "../recommendations/RecommendationList";
 import Skeleton from "@/components/ui/Skeleton";
 
 export default function EligibilityForm() {
+  const requiredText = (field: string) => ({ required: `${field} is required.`, validate: (value: string) => value.trim().length > 0 || `${field} is required.` });
   const {
     register,
     handleSubmit,
@@ -72,6 +74,7 @@ export default function EligibilityForm() {
       setSchemes(response.eligible_schemes);
       setSubmittedProfile(profile);
       setSubmitted(true);
+      if (!saveEligibilityHistory(profile, response.eligible_schemes)) toast.error("Your results are ready, but could not be saved in this browser.");
       toast.success(response.eligible_schemes.length ? `${response.eligible_schemes.length} eligibility match${response.eligible_schemes.length === 1 ? "" : "es"} found.` : "Eligibility check complete. No matches found.");
     } catch (error: unknown) {
       const message = getApiErrorMessage(error, "Something went wrong while checking eligibility.");
@@ -85,13 +88,20 @@ export default function EligibilityForm() {
   async function onSubmit(data: EligibilityRequest) {
     await runEligibilityCheck({
       ...data,
+      gender: data.gender.trim(),
+      state: data.state.trim(),
+      category: data.category.trim(),
+      citizenship: data.citizenship?.trim(),
+      occupation: data.occupation?.trim(),
+      education_level: data.education_level?.trim(),
+      class_or_course: data.class_or_course?.trim(),
       available_documents: availableDocumentsText.split(",").map((document) => document.trim()).filter(Boolean),
     });
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-10 rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/60 dark:border-slate-700 dark:bg-slate-900 dark:shadow-black/25 sm:p-8">
+      <form noValidate aria-busy={loading} onSubmit={handleSubmit(onSubmit)} className="mt-10 rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/60 dark:border-slate-700 dark:bg-slate-900 dark:shadow-black/25 sm:p-8">
         <div className="mb-8 flex flex-col gap-4 border-b border-slate-100 pb-6 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between"><div><div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue-700 dark:bg-blue-950/60 dark:text-blue-200"><ClipboardCheck className="h-3.5 w-3.5" /> Profile check</div><h2 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Tell us about yourself</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">We only use these details to evaluate the listed criteria.</p></div><div className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400"><ShieldCheck className="h-4 w-4 text-emerald-600" /> Clear, criteria-based results</div></div>
         <div className="mb-6 rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/70"><p className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">Try a demo profile</p><div className="mt-3 flex flex-wrap gap-2">{presets.map((preset) => <button key={preset.label} type="button" onClick={() => applyPreset(preset.profile)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-300">{preset.label}</button>)}</div></div>
         <div className="grid gap-5 md:grid-cols-2">
@@ -113,9 +123,7 @@ export default function EligibilityForm() {
         <Input
           label="Gender"
           placeholder="Male"
-          {...register("gender", {
-            required: "Gender is required.",
-          })}
+          {...register("gender", requiredText("Gender"))}
           error={errors.gender?.message}
         />
 
@@ -135,18 +143,14 @@ export default function EligibilityForm() {
         <Input
           label="State"
           placeholder="Himachal Pradesh"
-          {...register("state", {
-            required: "State is required.",
-          })}
+          {...register("state", requiredText("State"))}
           error={errors.state?.message}
         />
 
         <Input
           label="Category"
           placeholder="General"
-          {...register("category", {
-            required: "Category is required.",
-          })}
+          {...register("category", requiredText("Category"))}
           error={errors.category?.message}
         />
 
@@ -171,7 +175,7 @@ export default function EligibilityForm() {
         <Input
           label="Citizenship"
           placeholder="Indian"
-          {...register("citizenship", { required: "Citizenship is required." })}
+          {...register("citizenship", requiredText("Citizenship"))}
           error={errors.citizenship?.message}
         />
 
@@ -185,13 +189,13 @@ export default function EligibilityForm() {
           <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">Separate document names with commas. This is self-reported today; future OCR verification can be added without changing your results.</p>
         </div>
 
-        <label className="flex min-h-12 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-medium text-slate-700 transition hover:border-blue-200 hover:bg-blue-50/50">
-          <input className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" type="checkbox" {...register("has_disability")} />
+        <label className="flex min-h-12 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-medium text-slate-700 transition hover:border-blue-200 hover:bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800/70 dark:text-slate-200 dark:hover:border-blue-700 dark:hover:bg-slate-800">
+          <input className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-900" type="checkbox" {...register("has_disability")} />
           I have a disability
         </label>
 
-        <label className="flex min-h-12 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-medium text-slate-700 transition hover:border-blue-200 hover:bg-blue-50/50">
-          <input className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" type="checkbox" {...register("is_farmer")} />
+        <label className="flex min-h-12 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-medium text-slate-700 transition hover:border-blue-200 hover:bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800/70 dark:text-slate-200 dark:hover:border-blue-700 dark:hover:bg-slate-800">
+          <input className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-900" type="checkbox" {...register("is_farmer")} />
           I am a farmer
         </label>
 
@@ -203,7 +207,7 @@ export default function EligibilityForm() {
         </div>
       </form>
 
-      {requestError && <div role="alert" className="mt-6 flex gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-red-800 shadow-sm"><AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div><p className="font-bold">We couldn’t check eligibility</p><p className="mt-1 text-sm leading-6">{requestError}</p></div></div>}
+      {requestError && <div role="alert" aria-live="assertive" className="mt-6 flex gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-red-800 shadow-sm dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200"><AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400" /><div><p className="font-bold">We couldn’t check eligibility</p><p className="mt-1 text-sm leading-6">{requestError}</p></div></div>}
 
       {loading && <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3" aria-label="Loading eligibility results"><div className="md:col-span-2 xl:col-span-3 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm font-semibold text-blue-700">Analyzing your profile against the available scheme criteria…</div>{Array.from({ length: 3 }, (_, index) => <div key={index} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><Skeleton className="h-6 w-24" /><Skeleton className="mt-6 h-7 w-4/5" /><Skeleton className="mt-4 h-4 w-full" /><Skeleton className="mt-2 h-4 w-3/4" /><Skeleton className="mt-7 h-11 w-full" /></div>)}</div>}
 

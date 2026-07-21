@@ -6,7 +6,7 @@ import { ArrowRight, BadgeCheck, Compass, Search, ShieldCheck } from "lucide-rea
 import Container from "@/components/ui/Container";
 
 const highlights = [
-  ["4", "Recorded schemes"],
+  ["Verified", "Government schemes"],
   ["Clear", "Eligibility criteria"],
   ["Official", "Application links"],
 ];
