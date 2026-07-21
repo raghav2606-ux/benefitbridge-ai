@@ -1,3 +1,25 @@
+<p align="center">
+  <img src="asset/logo.png" alt="BenefitBridge AI Logo" width="220">
+</p>
+
+<h1 align="center">BenefitBridge AI</h1>
+
+<p align="center">
+Helping people discover government schemes they are actually eligible for.
+</p>
+
+<p align="center">
+
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.139-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Python](https://img.shields.io/badge/Python-3.12-yellow)
+![OpenAI Build Week](https://img.shields.io/badge/OpenAI-Build%20Week-412991)
+
+</p>
+
+---
+
 # BenefitBridge AI
 
 > Helping people discover government schemes they are actually eligible for.
